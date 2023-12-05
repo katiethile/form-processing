@@ -40,12 +40,20 @@
         <label for="Email">Email</label><br>
         <input type="email" name="Email" id="Email" placeholder="Email" required>
       </div>
+      <div>
+        <label for="Phone">Phone</label><br>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="xxx-xxx-xxxx" required>
+      </div>                                                                                  
       <label for="Address">Address</label><br>
       <input type="text" name="Address" id="Address" placeholder="Address" required>
     </div>
     <div>
     <label for="City">City</label><br>
     <input type="text" name="City" id="City" placeholder="City" required>
+    </div>
+    <div>
+    <label for="Postal Code">Postal Code</label><br>
+    <input type="text" name="Postal_Code" id="PostalCode" placeholder="Postal Code" required>
     </div>
       <div>
       <label for="State">State</label><br>
@@ -77,7 +85,10 @@
           </label>
         </fieldset>
       </div>
-
+      <div>
+        <label for="Note">Note</label><br>
+        <textarea name="Note" id="Note" placeholder="PLace any special instructions here" rows="4" cols="48"></textarea>
+        </div>
       <div>
         <input type="submit">
       </div>
