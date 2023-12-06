@@ -25,7 +25,7 @@
     <div id="output">
       <p>The following is a demonstration of a form that can be filled out and when data is entered, the data can be seen on the page.</p>
       <p>Any form fields that have names with an underscore between significant words, such as <b>First_Name</b> 
-        will be split into separate words, for example <b>First Name</b> upon submission.</p>  
+        will be split into separate words, for example <b>First Name</b> upon submission. The titleCase() function is applied to certain words for the value entered in the forms when entered. The values are: First Name, Last Name, Address and City.</p>  
     <form method="get" action="" class="main-form">
       <div>
         <label for="FirstName">First Name</label><br>
@@ -42,7 +42,7 @@
       </div>
       <div>
         <label for="Phone">Phone</label><br>
-        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="xxx-xxx-xxxx" required>
+        <input type="tel" id="Phone" name="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="xxx-xxx-xxxx" required>
       </div>                                                                                  
       <label for="Address">Address</label><br>
       <input type="text" name="Address" id="Address" placeholder="Address" required>
@@ -57,7 +57,7 @@
     </div>
       <div>
       <label for="State">State</label><br>
-      <select name="state" id="State" required>
+      <select name="State" id="State" required>
         <option value="">Please Pick A State</option>
         <option value="AK">Alaska</option>
         <option value="CA">California</option>
@@ -81,7 +81,7 @@
             <input type="checkbox" name="Interested_In" value="website"> Website<br>
             <input type="checkbox" name="Interested_In" value="shopping cart"> Shopping Cart<br>
             <input type="checkbox" name="Interested_In" value="JS gallery"> JS Gallery<br>
-            <input type="checkbox" name="Interested_In" value="lillipops"> Complimentary Lollipops
+            <input type="checkbox" name="Interested_In" value="lollipops"> Complimentary Lollipops
           </label>
         </fieldset>
       </div>
@@ -104,6 +104,17 @@
   </main>
   <script src="js/main.js"></script> 
   <script>
+    function titleCase(str){
+        str = str.split(" ");
+
+    for (let x = 0; x < str.length; x++){
+        str[x] = str[x].charAt(0).toUpperCase() + str[x].slice(1).toLowerCase();
+
+      }
+
+        str = str.join(" ");
+        return str;
+    }
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -114,6 +125,18 @@
       urlParams.forEach(function(value,key){
 
         key = key.split("_").join(" ");
+
+        switch(key){
+          case "First Name": 
+          case "Last Name": 
+          case "Address": 
+          case "City": 
+          value = titleCase(value);
+
+          break;
+
+        }
+
         myOutput += `<p>${key}: ${value}</p>`;
       });
       myOutput += `<p><a href="index.html">CLEAR</a></p>`; 
